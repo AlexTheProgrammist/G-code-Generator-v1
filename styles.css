@@ -1,0 +1,256 @@
+/* General Styles */
+body {
+    padding: 20px;
+    background: linear-gradient(180deg, #e3f2fd, #f0f8ff, #ffffff);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.generator-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+/* Output Box */
+.output {
+    background-color: #2d2d2d;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+    min-height: 200px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* Hidden Settings */
+.hidden-settings {
+    display: none;
+    margin-top: 10px;
+}
+
+#basicGcode {
+    margin-top: 0px; /* Поднимаем сам чекбокс */
+}
+
+/* Info Icon */
+.info-icon {
+    color: rgba(128, 128, 128, 0.7);
+    cursor: pointer;
+    margin-left: 5px;
+    font-size: 1.2rem;
+}
+
+.recommended-icon {
+    position: absolute;
+    right: 10px;
+    color: gold;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.info-icon:hover {
+    color: rgba(128, 128, 128, 1);
+}
+
+/* Form Switch Customization */
+.form-check-input {
+    cursor: pointer;
+    transform: scale(1.2);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    bottom: -3px;
+    position: relative;
+}
+
+.form-check-input:checked {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.form-check-label {
+    font-size: 1rem;
+    margin-left: 10px;
+    
+}
+
+/* Printer Selection Styles */
+.printer-selection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 150px;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin: 20px auto;
+}
+
+.printer-card {
+    width: 280px;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.printer-card img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.printer-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    border-color: #d0d0d0;
+}
+
+.printer-card h3 {
+    margin-bottom: 5px;
+    font-size: 1.3rem;
+    color: #333;
+}
+
+.printer-card p {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.printer-card:active {
+    transform: scale(0.98);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.calibration-section {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.calibration-img {
+    width: 200px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/*//////////////////////////////////////*/
+
+/* Sidebar Styling */
+.sidebar {
+    width: 200px;
+    background: #f8f9fa;
+    position: fixed; /* Фиксируем сбоку */
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Align menu items properly */
+.sidebar h4 {
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Default Nav Link */
+.nav-link {
+    font-size: 1.1rem;
+    color: #333;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover Effect */
+.nav-link:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Active State (Remains Blue) */
+.nav-link.active {
+    font-weight: bold;
+    background-color: #007bff !important;
+    color: white !important;
+}
+
+/* Tooltip styling */
+.tooltip-link {
+    position: relative;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.tooltip-link::after {
+    content: attr(data-tooltip);
+    visibility: hidden;
+    opacity: 0;
+    width: 200px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    bottom: 150%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.9rem;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.tooltip-link:hover::after {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .printer-selection {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .printer-card {
+        width: 100%;
+    }
+
+    .printer-card h3 {
+        font-size: 1.2rem;
+    }
+}
