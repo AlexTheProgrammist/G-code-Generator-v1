@@ -1,4 +1,3 @@
-/* General Styles */
 body {
     padding: 20px;
     background: linear-gradient(180deg, #e3f2fd, #f0f8ff, #ffffff);
@@ -31,7 +30,6 @@ h1 {
     font-weight: bold;
 }
 
-/* Output Box */
 .output {
     background-color: #2d2d2d;
     color: #ffffff;
@@ -41,17 +39,15 @@ h1 {
     font-family: 'Courier New', Courier, monospace;
 }
 
-/* Hidden Settings */
 .hidden-settings {
     display: none;
     margin-top: 10px;
 }
 
 #basicGcode {
-    margin-top: 0px; /* Поднимаем сам чекбокс */
+    margin-top: 0px; 
 }
 
-/* Info Icon */
 .info-icon {
     color: rgba(128, 128, 128, 0.7);
     cursor: pointer;
@@ -71,7 +67,6 @@ h1 {
     color: rgba(128, 128, 128, 1);
 }
 
-/* Form Switch Customization */
 .form-check-input {
     cursor: pointer;
     transform: scale(1.2);
@@ -91,7 +86,6 @@ h1 {
     
 }
 
-/* Printer Selection Styles */
 .printer-selection {
     display: flex;
     justify-content: center;
@@ -169,24 +163,21 @@ h1 {
 
 /*//////////////////////////////////////*/
 
-/* Sidebar Styling */
 .sidebar {
     width: 200px;
     background: #f8f9fa;
-    position: fixed; /* Фиксируем сбоку */
+    position: fixed; 
     padding: 15px;
     border-radius: 10px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Align menu items properly */
 .sidebar h4 {
     font-size: 1.2rem;
     text-align: center;
     margin-bottom: 15px;
 }
 
-/* Default Nav Link */
 .nav-link {
     font-size: 1.1rem;
     color: #333;
@@ -195,20 +186,17 @@ h1 {
     transition: background-color 0.3s ease;
 }
 
-/* Hover Effect */
 .nav-link:hover {
     background-color: #007bff;
     color: white;
 }
 
-/* Active State (Remains Blue) */
 .nav-link.active {
     font-weight: bold;
     background-color: #007bff !important;
     color: white !important;
 }
 
-/* Tooltip styling */
 .tooltip-link {
     position: relative;
     text-decoration: underline;
@@ -266,4 +254,11 @@ h1 {
 #copyGcodeBtn:hover {
     transform: scale(1.05);
     background-color: #198754 !important;
+}
+
+.calibration-img-large {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
