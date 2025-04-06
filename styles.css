@@ -239,8 +239,8 @@ h1 {
 }
 
 .content {
-    margin-left: 70px; /* Компенсируем фиксированную ширину меню */
-    padding: 20px;
+    padding-left: 150px;
+    box-sizing: border-box;
 }
 
 /* Responsive Adjustments */
@@ -257,4 +257,13 @@ h1 {
     .printer-card h3 {
         font-size: 1.2rem;
     }
+}
+
+#copyGcodeBtn {
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+#copyGcodeBtn:hover {
+    transform: scale(1.05);
+    background-color: #198754 !important;
 }
