@@ -238,6 +238,10 @@ h1 {
     opacity: 1;
 }
 
+.content {
+    margin-left: 70px; /* Компенсируем фиксированную ширину меню */
+    padding: 20px;
+}
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
