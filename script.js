@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
         return new bootstrap.Tooltip(tooltipTriggerEl);
     });
 
-    // Show printer selection on page load
+   
     showPrinterSelection();
 });
 
@@ -192,27 +192,27 @@ function updateGCode() {
         gcode += `G29 ; Enable bed leveling mesh\n`;
     }
 
-// 2️⃣ Авто-включение температурных настроек, если Clean Nozzle, Wipe Moves или Retract Filament включены
+
 const cleanNozzle = document.getElementById('cleanNozzle')?.checked;
 const wipeMoves = document.getElementById('wipeMoves')?.checked;
 const filamentRetract = document.getElementById('filamentRetract')?.checked;
 const enableBedTemp = document.getElementById('enableBedTemp');
 const enableNozzleTemp = document.getElementById('enableNozzleTemp');
-const bedTempSettings = document.getElementById('bedTempSettings'); // Поле ввода температуры стола
-const nozzleTempSettings = document.getElementById('nozzleTempSettings'); // Поле ввода температуры сопла
+const bedTempSettings = document.getElementById('bedTempSettings'); 
+const nozzleTempSettings = document.getElementById('nozzleTempSettings'); 
 
 if (cleanNozzle || wipeMoves) {
     enableBedTemp.checked = true;
     enableNozzleTemp.checked = true;
 
-    // Показываем поля ввода температуры
+    
     bedTempSettings.style.display = "block";
     nozzleTempSettings.style.display = "block";
 }
 
 if (filamentRetract) {
     enableNozzleTemp.checked = true;
-    nozzleTempSettings.style.display = "block"; // Показываем поле ввода температуры сопла
+    nozzleTempSettings.style.display = "block"; 
 }
 
     if (document.getElementById('enableFilamentSensor').checked) {
@@ -290,22 +290,22 @@ G1 X40 Y20 F4000
 
 function toggleBasicGcode() {
     const basicGcodeSettings = document.getElementById('basicGcodeSettings');
-    const enableMeshCheckbox = document.getElementById('enableMesh'); // Чекбокс G29
-    const homeAxesCheckbox = document.getElementById('homeAxes'); // Чекбокс G28
+    const enableMeshCheckbox = document.getElementById('enableMesh'); 
+    const homeAxesCheckbox = document.getElementById('homeAxes'); 
 
     if (document.getElementById('basicGcode').checked) {
         basicGcodeSettings.style.display = "block";
-        enableMeshCheckbox.disabled = true; // Блокируем G29
-        enableMeshCheckbox.checked = false; // Выключаем G29
-        homeAxesCheckbox.checked = false; // Выключаем G28
-        homeAxesCheckbox.disabled = true; // Блокируем G28
+        enableMeshCheckbox.disabled = true; 
+        enableMeshCheckbox.checked = false; 
+        homeAxesCheckbox.checked = false; 
+        homeAxesCheckbox.disabled = true; 
     } else {
         basicGcodeSettings.style.display = "none";
-        enableMeshCheckbox.disabled = false; // Разблокируем G29
-        homeAxesCheckbox.disabled = false; // Разблокируем G28
+        enableMeshCheckbox.disabled = false; 
+        homeAxesCheckbox.disabled = false; 
     }
 
-    updateGCode(); // ОБНОВЛЕНИЕ G-кода сразу после переключения
+    updateGCode(); 
 }
 
 
@@ -325,7 +325,7 @@ function toggleTempSettings() {
 
     if (document.getElementById('enableBedTemp').checked) {
         bedTempSettings.style.display = "block";
-        updateGCode(); // Ensure default value is added immediately
+        updateGCode(); 
     } else {
         bedTempSettings.style.display = "none";
         removeGCodeCommand("M140");
@@ -333,7 +333,7 @@ function toggleTempSettings() {
 
     if (document.getElementById('enableNozzleTemp').checked) {
         nozzleTempSettings.style.display = "block";
-        updateGCode(); // Ensure default value is added immediately
+        updateGCode(); 
     } else {
         nozzleTempSettings.style.display = "none";
         removeGCodeCommand("M104");
@@ -345,10 +345,10 @@ function toggleSensorSettings() {
 
     if (document.getElementById('enableFilamentSensor').checked) {
         sensorSettings.style.display = "block";
-        updateGCode(); // Add filament sensor setting to G-code
+        updateGCode(); 
     } else {
         sensorSettings.style.display = "none";
-        removeGCodeCommand("M413"); // Remove filament sensor command from G-code
+        removeGCodeCommand("M413"); 
     }
 }
 
@@ -382,9 +382,8 @@ function validateTemperature() {
         nozzleTempInput.value = maxNozzleTemp;
     }
 
-    updateGCode(); // Refresh G-code after validation
+    updateGCode(); 
 }
-
 
 ////////////////////////////////////////////////////////
 
@@ -394,10 +393,8 @@ function updateTitle(title) {
 
 
 function setActiveTab(element) {
-    // Remove "active" class from all navigation links
+    
     document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
-
-    // Add "active" class to the clicked link
     element.classList.add('active');
 }
 
@@ -423,7 +420,7 @@ function showPrinterSelection() {
 }
 
 function loadCalibrationTab() {
-    updateTitle("Calibration"); // Update the title
+    updateTitle("Calibration"); 
 
     document.getElementById('mainContent').innerHTML = `
         <div class="container mt-4">
@@ -444,7 +441,7 @@ function loadCalibrationTab() {
 }
 
 function loadEStepsCalibration() {
-    updateTitle("E-Steps Calibration"); // Update the title
+    updateTitle("E-Steps Calibration"); 
 
     document.getElementById('calibrationContent').innerHTML = `
         <div class="container mt-4">
@@ -471,11 +468,15 @@ function loadEStepsCalibration() {
             <ul>
                 <li>Preheat your hotend to the printing temperature of your filament.</li>
                 <li>Cut and straighten a piece of filament.</li>
-                <li>Measure <strong>100mm</strong> from where the filament enters the extruder and mark it.</li>
+               <li><p>Measure <strong>100mm</strong> from where the filament enters the extruder and mark it.</p></li>
+                <div class="text-center my-3">
+            <img src="filament mark.jpg" class="calibration-img-large" alt="Measuring filament with caliper">
+            <p class="mt-2 text-muted">Measuring 100 mm of filament using a digital caliper before extrusion.</p>
+                </div>
                 <li>Run the following command to extrude 100mm:</li>
             </ul>
             <pre>G92 E0  ; Reset extruder position
-G1 E100 F100  ; Extrude 100mm of filament</pre>
+            G1 E100 F100  ; Extrude 100mm of filament</pre>
             <p>Once the extrusion is complete, measure how much filament was actually used.</p>
 
             <hr>
@@ -588,6 +589,10 @@ function loadFlowCalibration() {
                 </li>
                 <li>Slice the model and print it.</li>
                 <li>Once printed, use <strong>digital calipers</strong> to measure the actual wall thickness.</li>
+                <div class="text-center my-3">
+                <img src="flow calibration.jpg" class="calibration-img-large" alt="Measuring wall thickness of calibration cube">
+                 <p class="mt-2 text-muted">Measuring the wall thickness of a single-wall cube using a digital caliper.</p>
+                </div>
             </ul>
 
             <hr>
@@ -678,7 +683,10 @@ function loadPIDCalibration() {
                 <li><strong>C10</strong> → Number of calibration cycles</li>
             </ul>
             <p>Wait for the calibration to finish. The printer will output new PID values.</p>
-
+            <div class="text-center my-3">
+            <img src="PID.png" class="calibration-img-large" alt="PID tuning result graph showing temperature stability">
+            <p class="mt-2 text-muted">Temperature graph showing behavior before, during, and after PID tuning.</p>
+            </div>
             <hr>
 
             <p><strong>Step 3: Saving the New PID Values</strong></p>
@@ -752,6 +760,10 @@ function loadPACalibration() {
                 <li>After setting up, the software will generate the test, which won't be visible in the <strong>Prepare</strong> window due to its custom G-code nature.</li>
                 <li>Switch to the <strong>Preview</strong> tab to see the sliced project, displaying a tower with varying PA values across its height.</li>
                 <li>For better results, it is recommended to print at a speed above <strong>120 mm/s</strong>.</li>
+                <div class="text-center my-3">
+                <img src="pa.jpeg" class="calibration-img-large" alt="Pressure Advance calibration print showing corner artifacts">
+                <p class="mt-2 text-muted">Print result with incorrect Pressure Advance settings: visible bulges on corners due to improper extrusion control.</p>
+                </div>
             </ul>
 
 
@@ -762,7 +774,10 @@ function loadPACalibration() {
             <ul>
                 <li>Carefully assess each corner of the tower. Identify the height where the print shows the best balance, marking it for reference.</li>
                 <li>Calculate your new PA value based on the marked height and adjust your printer’s settings accordingly to achieve the best print quality.</li>
-                
+                <div class="text-center my-3">
+                <img src="pa.png" class="calibration-img-large" alt="Examples of bad and good Pressure Advance values">
+                <p class="mt-2 text-muted">Examples of different Pressure Advance values: from too high to just right to too low. Use this as a visual reference when evaluating your test print.</p>
+                </div>
             </ul>
 
             <hr>
@@ -787,7 +802,7 @@ function loadPACalibration() {
 }
 
 function loadTerminalSetup() {
-    updateTitle("Terminal Setup (Pronterface)"); // Update the title
+    updateTitle("Terminal Setup (Pronterface)"); 
 
     document.getElementById('mainContent').innerHTML = `
         <div class="container mt-4">
