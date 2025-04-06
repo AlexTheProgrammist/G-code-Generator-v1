@@ -159,9 +159,15 @@ G29 ; Enable bed leveling mesh
             <div class="col-md-6">
                 <div class="card shadow-sm">
                     <div class="card-header bg-dark text-white">G-code Output</div>
-                    <div class="card-body">
-                        <div class="output" id="gcodeOutput">Your G-code will appear here...</div>
-                    </div>
+<div class="card-body">
+    <div class="d-flex justify-content-between align-items-center mb-2">
+        <strong>Output</strong>
+        <button class="btn btn-sm btn-success" id="copyGcodeBtn" onclick="copyGcode()">
+            Copy G-code
+        </button>
+    </div>
+    <div class="output" id="gcodeOutput">Your G-code will appear here...</div>
+</div>
                 </div>
             </div>
         </div>
@@ -492,7 +498,7 @@ G1 E100 F100  ; Extrude 100mm of filament</pre>
             <hr>
 
             <p><strong>Step 4: Apply the New Value to Your Printer</strong></p>
-            <p>Click the button below to apply the new value and save it to the printer.</p>
+            <p>Click the button below to apply the new value, then save it to the printer.</p>
 
             <button class="btn btn-success" onclick="setNewESteps()">Set New Value</button>
 
@@ -911,4 +917,15 @@ M119    ; Check endstop status`;
     }
 
     document.getElementById('gcodeOutput').innerText = gcode;
+}
+
+function copyGcode() {
+    const gcodeText = document.getElementById('gcodeOutput').innerText;
+
+    navigator.clipboard.writeText(gcodeText).then(() => {
+        const toast = new bootstrap.Toast(document.getElementById('gcodeToast'));
+        toast.show();
+    }).catch(() => {
+        alert("❌ Не удалось скопировать. Попробуйте вручную.");
+    });
 }
